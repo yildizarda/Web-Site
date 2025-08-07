@@ -1,0 +1,134 @@
+header{
+  .container{
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+        url('../public/img/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    // Yumuşak fade-in efekti için pseudo-element
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.3) 40%,
+            rgba(0, 0, 0, 0.5) 80%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
+        z-index: 1;
+        backdrop-filter: blur(0.5px);
+    }
+    
+    // Alt kısım için ek yumuşak geçiş
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0),
+            var(--bg-color)
+        );
+        z-index: 3;
+    }
+    
+    // İçerik z-index ayarı
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+    
+    // Mobile responsive
+    @media (max-width: 768px) {
+        height: 40vh;
+        padding: 0 20px;
+        background-attachment: scroll; // Mobile'da fixed attachment performans sorunu yaratabilir
+        
+        &::after {
+            height: 60px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        height: 35vh;
+        padding: 0 15px;
+        
+        &::after {
+            height: 40px;
+        }
+    }
+    
+    h1 {
+        color: white;
+        font-size: 6rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        animation: fadeInUp 1s ease-out;
+        
+        // Mobile responsive
+        @media (max-width: 768px) {
+            font-size: 4rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+    
+    p {
+        color: white;
+        font-size: 1.8rem;
+        max-width: 600px;
+        line-height: 1.6;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        animation: fadeInUp 1s ease-out 0.3s both;
+        
+        // Mobile responsive
+        @media (max-width: 768px) {
+            font-size: 1.4rem;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 1.1rem;
+            max-width: 300px;
+            line-height: 1.4;
+        }
+    }
+  }
+}
+
+// Animasyon tanımları
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

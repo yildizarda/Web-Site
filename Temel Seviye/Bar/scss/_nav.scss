@@ -1,0 +1,168 @@
+@use "variables";
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    
+    .container {
+        background-color: variables.$primary-color;
+        height: 100px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        
+        // Mobile responsive
+        @media (max-width: 768px) {
+            height: 80px;
+            padding: 0 15px;
+        }
+        
+        @media (max-width: 480px) {
+            height: 70px;
+            padding: 0 10px;
+            flex-wrap: wrap;
+        }
+    }
+  
+    .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        
+        // Mobile responsive
+        @media (max-width: 480px) {
+            gap: 10px;
+        }
+    }
+    
+    .logo {
+        background: linear-gradient(to right, var(--secondary-color) 40%, white 50%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 32px;
+        font-weight: bold;
+        cursor: pointer;
+        letter-spacing: 8px;
+        
+        // Mobile responsive
+        @media (max-width: 768px) {
+            font-size: 24px;
+            letter-spacing: 4px;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+    }
+  
+    .theme-toggle {
+        .theme-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+            
+            // Mobile responsive
+            @media (max-width: 768px) {
+                font-size: 20px;
+                padding: 6px;
+            }
+            
+            @media (max-width: 480px) {
+                font-size: 18px;
+                padding: 4px;
+            }
+      
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        
+        // Mobile responsive
+        @media (max-width: 768px) {
+            gap: 1rem;
+        }
+        
+        @media (max-width: 480px) {
+            gap: 0.5rem;
+            width: 100%;
+            justify-content: center;
+            order: 3;
+            flex-basis: 100%;
+            margin-top: 10px;
+        }
+    }
+    
+    li {
+        position: relative;
+
+        a {
+            font-size: 20px;
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            
+            // Mobile responsive
+            @media (max-width: 768px) {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+            
+            @media (max-width: 480px) {
+                font-size: 14px;
+                padding: 5px 8px;
+            }
+        }
+   
+        // Oval turuncu dekorasyon - sadece ilk li için (Home)
+        &:first-child::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            opacity: 0.4;
+            z-index: 1;
+            
+            // Mobile responsive
+            @media (max-width: 768px) {
+                width: 60px;
+                height: 25px;
+            }
+            
+            @media (max-width: 480px) {
+                width: 50px;
+                height: 20px;
+            }
+        }
+    }
+    
+    li:first-child a:hover{
+        color: var(--text-color);
+    }
+    
+    li:not(:first-child)a:hover{
+        color: var(--secondary-color);
+    }
+}

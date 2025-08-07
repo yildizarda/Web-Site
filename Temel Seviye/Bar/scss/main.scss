@@ -1,0 +1,27 @@
+@use 'nav';
+@use 'theme';
+@use 'header';
+@use 'content';
+@use 'footer';
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; // Navigation bar yüksekliği kadar
+    
+    // Mobile responsive scroll padding
+    @media (max-width: 768px) {
+        scroll-padding-top: 80px; // Tablet navigation yüksekliği
+    }
+    
+    @media (max-width: 480px) {
+        scroll-padding-top: 70px; // Mobile'da menu alt satıra geçtiği için daha fazla
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Big Shoulders Stencil', cursive;
+}
+
